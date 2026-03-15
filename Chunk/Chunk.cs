@@ -7,7 +7,6 @@ public static class ChunkClass
 {
     public static IEnumerable<IEnumerable<T>> Chunk<T>(this IEnumerable<T> list, int size)
     {
-        List<List<T>> lists = new List<List<T>>();
         List<T> tempList = list.ToList();
 
         int count = 0;
@@ -28,11 +27,11 @@ public static class ChunkClass
                 temp.Add(tempList[i]);
             }
 
-            lists.Add(temp);
+            yield return temp;
 
             count++;
         }
 
-        return lists;
+        yield break;
     }
 }
